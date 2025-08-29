@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receptivo – AI Receptionists for Modern Businesses</title>
+  <!-- Link our custom stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="logo">
+        <!-- Replace text with your logo image -->
+        <img src="logo.png" alt="Receptivo logo" class="logo-img" />
+      </div>
+      <nav class="main-nav">
+        <a href="#benefits">Benefits</a>
+        <a href="#calculator">ROI&nbsp;Calculator</a>
+        <a href="#industries">Industries</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Book&nbsp;Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1><span class="highlight">Never</span> Miss Another Opportunity</h1>
+      <p>
+        Receptivo is your 24/7 AI receptionist. Capture every inbound call,
+        schedule appointments automatically, and free up your team to focus on
+        what truly matters – growing your business.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book a Free Demo</a>
+        <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="benefits">
+    <div class="container">
+      <h2>Why Choose Receptivo?</h2>
+      <div class="benefit-grid">
+        <div class="benefit-item">
+          <div class="icon-circle">1</div>
+          <h3>Capture Every Call</h3>
+          <p>Receptivo answers instantly, 24/7, ensuring no lead ever slips through the cracks.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="icon-circle">2</div>
+          <h3>Free Up Your Team</h3>
+          <p>Automate appointment booking and intake tasks so your staff can focus on closing sales.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="icon-circle">3</div>
+          <h3>Deliver 5-Star Experiences</h3>
+          <p>Provide friendly, human‑like conversations that build trust and convert prospects into loyal clients.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="icon-circle">4</div>
+          <h3>Save on Costs</h3>
+          <p>Our AI receptionist works around the clock at a fraction of the cost of a full‑time hire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section id="calculator" class="calculator">
+    <div class="container">
+      <h2>See Your Potential ROI</h2>
+      <p class="calculator-intro">Adjust the sliders to estimate how much missed calls are costing your business every month.</p>
+      <div class="calc-grid">
+        <div class="calc-item">
+          <label for="missedCalls">Missed Calls per Month</label>
+          <input type="range" id="missedCalls" name="missedCalls" min="0" max="200" value="50" step="5" />
+          <span class="calc-value" id="missedCallsVal">50</span>
+        </div>
+        <div class="calc-item">
+          <label for="conversionRate">Conversion Rate (%)</label>
+          <input type="range" id="conversionRate" name="conversionRate" min="10" max="90" value="40" step="5" />
+          <span class="calc-value" id="conversionRateVal">40%</span>
+        </div>
+        <div class="calc-item">
+          <label for="avgValue">Average Client Value ($)</label>
+          <input type="range" id="avgValue" name="avgValue" min="50" max="1000" value="200" step="10" />
+          <span class="calc-value" id="avgValueVal">$200</span>
+        </div>
+      </div>
+      <div class="calc-result">
+        <p>You could be losing</p>
+        <h3 id="lostRevenue">$4,000</h3>
+        <p class="result-note">every month by letting calls go unanswered.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section id="industries" class="industries">
+    <div class="container">
+      <h2>Industries We Serve</h2>
+      <div class="industry-grid">
+        <div class="industry-item">
+          <div class="industry-icon">🦷</div>
+          <h4>Dental &amp; Orthodontics</h4>
+        </div>
+        <div class="industry-item">
+          <div class="industry-icon">💆‍♀️</div>
+          <h4>Medspa &amp; Aesthetics</h4>
+        </div>
+        <div class="industry-item">
+          <div class="industry-icon">🔨</div>
+          <h4>Roofing &amp; Construction</h4>
+        </div>
+        <div class="industry-item">
+          <div class="industry-icon">🚗</div>
+          <h4>Auto Services</h4>
+        </div>
+        <div class="industry-item">
+          <div class="industry-icon">🏠</div>
+          <h4>Home Services</h4>
+        </div>
+        <div class="industry-item">
+          <div class="industry-icon">🏥</div>
+          <h4>Clinics &amp; Healthcare</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h3>A Customer Calls</h3>
+          <p>Your phone rings day or night; Receptivo is always listening.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h3>Receptivo Answers</h3>
+          <p>Our AI receptionist responds instantly, collects details and books the appointment.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h3>You Close the Deal</h3>
+          <p>Receive booked appointments directly in your calendar and focus on delivering amazing service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Built For Busy Teams</h2>
+      <p class="features-intro">Receptivo combines powerful AI with world‑class service to remove friction at every step.</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Human‑like Voice<span class="arrow">▼</span></button>
+          <div class="accordion-content">
+            <p>Our AI is trained to sound natural and empathetic. Callers feel like they’re talking to a real person, not a robot.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Done‑For‑You Service<span class="arrow">▼</span></button>
+          <div class="accordion-content">
+            <p>We set everything up for you and handle ongoing updates, so you can stay focused on your business.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Smart Follow‑Ups<span class="arrow">▼</span></button>
+          <div class="accordion-content">
+            <p>Automated texts and emails keep prospects engaged until they book, without you lifting a finger.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">In‑Conversation Scheduling<span class="arrow">▼</span></button>
+          <div class="accordion-content">
+            <p>Receptivo integrates with your calendar to schedule appointments on the spot, even across time zones.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Custom Integrations<span class="arrow">▼</span></button>
+          <div class="accordion-content">
+            <p>Sync seamlessly with your CRM, EMR or booking platform. Our team will connect Receptivo wherever you work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="cta">
+    <div class="container cta-container">
+      <h2>Book Your Live Demo</h2>
+      <p>Pick a time that works for you and see how Receptivo can start turning missed calls into new appointments today.</p>
+      <!-- Calendly embed: replace the URL with your own scheduling link -->
+      <div class="calendly-embed-wrapper">
+        <iframe src="https://calendly.com/receptivo/demo?hide_gdpr_banner=1"
+                frameborder="0" scrolling="no"></iframe>
+      </div>
+      <p class="calendly-note">Don’t have Calendly? Replace the link above with your own booking tool embed.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo">Receptivo</div>
+      <div class="footer-contact">
+        <p>Email: <a href="mailto:hello@receptivo.ai">hello@receptivo.ai</a></p>
+        <p>Phone: <a href="tel:+15551234567">+1 (555) 123‑4567</a></p>
+      </div>
+      <div class="footer-note">
+        <p>© 2025 Receptivo Solutions. All rights reserved.</p>
+        <p><a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
