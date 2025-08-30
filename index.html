@@ -204,12 +204,14 @@
     <div class="container cta-container">
       <h2>Book Your Live Demo</h2>
       <p>Pick a time that works for you and see how Receptivo can start turning missed calls into new appointments today.</p>
-      <!-- Calendly embed: displays full event details and scheduling interface in one widget -->
-      <div class="calendly-embed-container">
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1"
-             style="min-width: 320px; height: 850px;"></div>
-      </div>
+      <!-- Calendly inline embed. When given enough width (min-width of ~1000px),
+           Calendly will automatically render the event details on the left and
+           the calendar on the right, giving a horizontal layout similar to
+           SupremeAI. The height is set to 900px to provide room for the
+           available times list. -->
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1"
+           style="min-width: 1000px; height: 900px;"></div>
       <!-- Load Calendly’s external widget script so the inline widget renders correctly -->
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       <p class="calendly-note">Don’t have Calendly? Replace the link above with your own booking tool embed.</p>
