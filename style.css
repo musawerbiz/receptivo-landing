@@ -483,9 +483,12 @@ p {
 }
 
 /* Calendly embed styling */
+/* Calendly embed wrapper
+   Increase max-width to allow the two-column Calendly layout (profile on left, calendar on right)
+   by giving the widget more horizontal space. */
 .calendly-embed-wrapper {
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   margin: 2rem auto 0;
   border-radius: 1rem;
   overflow: hidden;
@@ -507,8 +510,9 @@ p {
   width: 100%;
 }
 
+/* Increase CTA container width for Calendly to display side-by-side details and calendar */
 .cta-container {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
