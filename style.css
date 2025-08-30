@@ -512,10 +512,30 @@ p {
   gap: 2rem;
 }
 
-.calendly-left,
+
+/*
+ * Customise the Calendly two‑column layout widths. By default the left
+ * event description will take up roughly a third of the available space
+ * and the right Calendly scheduling widget will use the remaining space.
+ * On narrow viewports the columns will stack vertically and occupy the
+ * full width of the container.
+ */
+.calendly-left {
+  flex: 0 0 35%;
+  min-width: 280px;
+}
+
 .calendly-right {
-  flex: 1;
+  flex: 0 0 65%;
   min-width: 320px;
+}
+
+@media (max-width: 768px) {
+  .calendly-left,
+  .calendly-right {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
 }
 
 .calendly-right iframe {
