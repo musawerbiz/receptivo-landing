@@ -207,7 +207,17 @@
       <!-- Calendly embed: use official inline widget for the Receptivo demo -->
       <div class="calendly-embed-wrapper">
         <!-- Calendly inline widget begin -->
-        <div class="calendly-inline-widget" data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1" style="min-width:320px;height:800px;"></div>
+        <!--
+          Adjust the sizing on the Calendly widget so the booking page displays
+          the descriptive profile pane on the left and the date/time grid on
+          the right. Calendly switches to a two‑column layout once the widget
+          reaches roughly 850px wide. Set a larger min‑width to force this
+          horizontal layout on desktop screens and increase the height to
+          avoid internal scrolling.
+        -->
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1"
+             style="min-width:850px;height:850px;"></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         <!-- Calendly inline widget end -->
       </div>
