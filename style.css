@@ -87,13 +87,18 @@ body {
   color: var(--primary);
   text-transform: uppercase;
 }
+/* Enlarged logo icon for better brand presence in the header */
 .logo-icon {
-  height: 48px;
-  width: 48px;
-  margin-right: 0.5rem;
+  /* Increase the size of the circular icon to make it more prominent */
+  height: 64px;
+  width: 64px;
+  margin-right: 0.75rem;
 }
+
+/* Larger wordmark to complement the bigger icon */
 .logo-text {
-  font-size: 1.5rem;
+  /* Increase font size to roughly 32px for improved readability */
+  font-size: 2rem;
   letter-spacing: 2px;
   color: var(--primary);
 }
