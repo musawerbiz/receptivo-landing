@@ -212,9 +212,14 @@
           <p>Receptivo means “open to new ideas.” This short call is for forward‑thinking business owners who are ready to explore a smarter way to handle leads, appointments and client communication. No pressure, no pitch — just a conversation to show you how others are automating what used to take 10+ hours a week and scaling with AI.</p>
         </div>
         <div class="calendly-right">
-          <iframe src="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1&hide_event_type_details=1" frameborder="0"></iframe>
+          <!-- Calendly inline widget: hides the event details and displays only the scheduling interface -->
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1&hide_event_type_details=1"
+               style="min-width: 320px; height: 700px;"></div>
         </div>
       </div>
+      <!-- Load Calendly’s external widget script once so the inline widget renders correctly -->
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
       <p class="calendly-note">Don’t have Calendly? Replace the link above with your own booking tool embed.</p>
     </div>
   </section>
