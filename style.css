@@ -502,6 +502,11 @@ p {
   margin-top: 1rem;
 }
 
+/* Ensure Calendly inline widget spans the full width of its container */
+.calendly-embed-wrapper .calendly-inline-widget {
+  width: 100%;
+}
+
 .cta-container {
   max-width: 700px;
   margin: 0 auto;
@@ -594,4 +599,9 @@ p {
 
 .footer-note a:hover {
   text-decoration: underline;
+}
+
+/* Center align the footer note text (Terms & Conditions | Privacy Policy) */
+.footer-note {
+  text-align: center;
 }
