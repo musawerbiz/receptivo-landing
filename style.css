@@ -506,11 +506,21 @@ p {
 }
 
 /* Custom two‑column Calendly layout */
-.calendly-columns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
+    .calendly-columns {
+      /* Use CSS grid for the two‑column Calendly layout. On wider screens
+         the event details and scheduler will sit side by side. On narrow
+         screens they will stack vertically. */
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .calendly-columns {
+        grid-template-columns: 1fr;
+      }
+    }
 
 
 /*
