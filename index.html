@@ -204,22 +204,16 @@
     <div class="container cta-container">
       <h2>Book Your Live Demo</h2>
       <p>Pick a time that works for you and see how Receptivo can start turning missed calls into new appointments today.</p>
-      <!-- Calendly embed: use official inline widget for the Receptivo demo -->
-      <div class="calendly-embed-wrapper">
-        <!-- Calendly inline widget begin -->
-        <!--
-          Adjust the sizing on the Calendly widget so the booking page displays
-          the descriptive profile pane on the left and the date/time grid on
-          the right. Calendly switches to a two‑column layout once the widget
-          reaches roughly 850px wide. Set a larger min‑width to force this
-          horizontal layout on desktop screens and increase the height to
-          avoid internal scrolling.
-        -->
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1"
-             style="min-width:850px;height:850px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        <!-- Calendly inline widget end -->
+      <!-- Custom two‑column Calendly embed: show event details on the left and date/time slots on the right -->
+      <div class="calendly-columns">
+        <div class="calendly-left">
+          <h3>Receptivo AI Demo — See How It Works</h3>
+          <p><strong>Duration:</strong> 15&nbsp;mins</p>
+          <p>Receptivo means “open to new ideas.” This short call is for forward‑thinking business owners who are ready to explore a smarter way to handle leads, appointments and client communication. No pressure, no pitch — just a conversation to show you how others are automating what used to take 10+ hours a week and scaling with AI.</p>
+        </div>
+        <div class="calendly-right">
+          <iframe src="https://calendly.com/musawerbiz/receptivo-ai-demo?hide_gdpr_banner=1&hide_event_type_details=1" frameborder="0"></iframe>
+        </div>
       </div>
       <p class="calendly-note">Don’t have Calendly? Replace the link above with your own booking tool embed.</p>
     </div>

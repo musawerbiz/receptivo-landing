@@ -505,6 +505,25 @@ p {
   margin-top: 1rem;
 }
 
+/* Custom two‑column Calendly layout */
+.calendly-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.calendly-left,
+.calendly-right {
+  flex: 1;
+  min-width: 320px;
+}
+
+.calendly-right iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+}
+
 /* Ensure Calendly inline widget spans the full width of its container */
 .calendly-embed-wrapper .calendly-inline-widget {
   width: 100%;
