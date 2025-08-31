@@ -88,18 +88,24 @@ body {
   text-transform: uppercase;
 }
 /* Enlarged logo icon for better brand presence in the header */
+/*
+ * Logo sizing
+ *
+ * Enlarge the Receptivo logo so it has strong visual presence in the navigation bar.
+ * The icon is 72px square and the wordmark scales accordingly. A generous margin
+ * provides breathing room between the icon and text. Tweaked letter‑spacing
+ * improves legibility at larger sizes.
+ */
 .logo-icon {
-  /* Increase the size of the circular icon to make it more prominent */
-  height: 64px;
-  width: 64px;
-  margin-right: 0.75rem;
+  height: 72px;
+  width: 72px;
+  margin-right: 0.85rem;
 }
 
 /* Larger wordmark to complement the bigger icon */
 .logo-text {
-  /* Increase font size to roughly 32px for improved readability */
-  font-size: 2rem;
-  letter-spacing: 2px;
+  font-size: 2.4rem;
+  letter-spacing: 2.5px;
   color: var(--primary);
 }
 
@@ -116,6 +122,15 @@ body {
 }
 
 /* Hero Section */
+/*
+ * Hero Section
+ *
+ * The hero uses a layered approach to achieve a truly dynamic background.
+ * A base image (hero-bg.png) provides subtle texture, while animated
+ * gradients and radial patterns move slowly across the section to
+ * create a futuristic, constantly shifting feel. The pseudo-element is
+ * deliberately overscaled so motion remains visible even on large screens.
+ */
 .hero {
   position: relative;
   display: flex;
@@ -124,13 +139,37 @@ body {
   min-height: 85vh;
   text-align: center;
   overflow: hidden;
-  /* Use a dynamic, futuristic background image for the hero section. The
-     gradient blue waves convey motion and innovation while staying within
-     the brand colour palette. The image file is stored in the project
-     directory as hero-bg.png. */
-  background-image: url('hero-bg.png');
+  background-image: url('hero-bg.png'); /* fallback texture */
   background-size: cover;
   background-position: center;
+}
+
+/* Animated radial overlay moves slowly across the hero area. */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250%;
+  height: 250%;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.45), transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.45), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.35), transparent 70%);
+  animation: heroRadial 45s linear infinite;
+  z-index: 1;
+}
+
+@keyframes heroRadial {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  50% {
+    transform: translate(-30%, 20%) scale(1.1);
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1);
+  }
 }
 
 .hero-content {
@@ -164,6 +203,17 @@ body {
   color: var(--muted);
 }
 
+/* Additional tagline under the hero copy that conveys scarcity and urgency */
+.hero-sub {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -171,32 +221,129 @@ body {
   gap: 1rem;
 }
 
+/*
+ * Buttons
+ *
+ * Elevate the calls‑to‑action with generous padding, rounded corners
+ * and layered hover effects. A shimmer animation runs across the
+ * primary button on hover to draw the eye, while secondary buttons
+ * feature a subtle fill. Focus states include a glow for keyboard
+ * accessibility. These patterns are inspired by modern SaaS design but
+ * tailored to the Receptivo palette.
+ */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: 1.75rem;
   font-weight: 600;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .btn-primary {
-  background-image: linear-gradient(45deg, var(--primary), var(--accent));
+  /* Create a subtle two‑tone gradient with depth */
+  background-image: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+/* Shine animation overlay for primary buttons */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.25), rgba(255,255,255,0));
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.btn-primary:hover::after {
+  left: 150%;
 }
 .btn-primary:hover {
-  opacity: 0.9;
+  filter: brightness(1.05);
 }
 .btn-secondary {
-  border: 2px solid var(--primary);
+  border: 2px dashed var(--primary);
   color: var(--primary);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+/* Fill the secondary button on hover for an interactive feel */
+.btn-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.btn-secondary:hover::before {
+  opacity: 0.25;
 }
 .btn-secondary:hover {
-  background-color: var(--primary);
-  color: #041c32;
+  color: var(--light-bg);
+}
+
+/* Add a glowing ring on focus for accessibility */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(97, 168, 217, 0.5);
+}
+
+/* Custom range slider styling for the ROI calculator */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface);
+  outline: none;
+  margin-top: 0.5rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: 2px solid var(--accent);
+  transition: transform 0.2s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Scarcity tagline inside the CTA section */
+.cta-scarcity {
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 /* Hero Background Decoration */
@@ -212,7 +359,9 @@ body {
   /* Lower the opacity of the radial gradient overlay so the underlying
      background image remains visible while still adding subtle colour
      variations. */
-  opacity: 0.25;
+  /* Lower opacity so the animated radial overlay remains visible while still
+     adding depth with subtle coloured glows */
+  opacity: 0.15;
   filter: blur(80px);
   pointer-events: none;
 }
