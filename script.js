@@ -67,8 +67,10 @@ class GooCircle {
   constructor(x, y, baseRadius, bounceRadius, angleCircle) {
     this.basePosition = { x, y };
     this.position = { x, y };
-    // Slow down the rotation speed for a calmer motion
-    this.speed = 0.004;
+    // Slow down the rotation speed for a calmer motion.  Lower values
+    // produce smoother, slower animations; larger values speed up the
+    // undulations.
+    this.speed = 0.003;
     this.baseSize = 10;
     this.size = 10;
     this.angle = (x + y);
@@ -97,10 +99,14 @@ class GooCircleContainer {
   constructor(context, x, y) {
     this.context = context;
     this.position = { x, y };
-    this.numberOfCircles = 12;
+    // Increase the size and complexity of the blobs. Fewer circles
+    // with larger base and bounce radii create more irregular,
+    // dramatic shapes that fill more of the hero section. These
+    // values can be tweaked to adjust the animation’s feel.
+    this.numberOfCircles = 8;
     this.circles = [];
-    this.baseRadius = 15;
-    this.bounceRadius = 120;
+    this.baseRadius = 30;
+    this.bounceRadius = 220;
     this.singleSlice = TWO_PI / this.numberOfCircles;
   }
   initializeCircles() {
@@ -134,9 +140,12 @@ class GooApplication {
     this.width = this.canvas.width = window.innerWidth;
     this.height = this.canvas.height = window.innerHeight;
     this.circleContainers = [];
-    // Create containers across the width and height with some spacing
-    for (let x = 0; x < this.width + 100; x += 120) {
-      for (let y = 0; y < this.height + 100; y += 120) {
+    // Create containers across the width and height with generous spacing.
+    // Using a larger spacing yields fewer, larger blobs which better fill
+    // the hero section without creating a dense grid. Adjust the step
+    // value to control the density of blobs.
+    for (let x = 0; x < this.width + 200; x += 200) {
+      for (let y = 0; y < this.height + 200; y += 200) {
         let cc = new GooCircleContainer(this.context, x, y);
         cc.initializeCircles();
         this.circleContainers.push(cc);

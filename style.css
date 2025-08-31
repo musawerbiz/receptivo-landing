@@ -156,6 +156,45 @@ body {
   background: linear-gradient(180deg, #021e34 0%, #052d52 100%);
 }
 
+/* Dark overlay to improve text contrast in the hero.
+   This semi‑transparent layer sits above the animated canvas but below
+   the content. It darkens the background behind the headline and
+   buttons, preventing blurred colours from washing out the text. */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Increase the opacity of the overlay so the moving canvas
+     background doesn’t compete with the hero text. A darker
+     overlay improves contrast and readability. */
+  background: rgba(2, 30, 52, 0.75);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Canvas used for the dynamic sea‑wave background. It fills the
+   hero section and sits beneath the overlay and content. The SVG
+   filters are referenced via the filter property to create the gooey
+   effect. A slight blur further softens the edges of the circles. */
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: url('#shadowed-goo') blur(20px);
+  z-index: 0;
+  display: block;
+  margin: 0;
+}
+
+/* Hide the SVG definitions used for filters */
+.goo-filters {
+  display: none;
+}
+
 /* Blurred colour orbs layer */
 .hero::before {
   /* Override the default pseudo‑element so no element is rendered.
@@ -241,10 +280,21 @@ body {
   }
 }
 
+/*
+ * Headline accent on the hero.
+ * Previously this used a gradient clipped into the text which created a
+ * translucent effect that could make the first word hard to read on
+ * dark backgrounds. To improve readability while still giving the
+ * headline a splash of colour, remove the gradient and simply use
+ * the accent colour for the text. Also remove the background clip
+ * properties so the text renders as normal text.
+ */
 .highlight {
-  background-image: linear-gradient(45deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
+  background-image: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  text-shadow: none;
 }
 
 .hero p {
@@ -271,7 +321,10 @@ body {
 /* Additional tagline under the hero copy that conveys scarcity and urgency */
 .hero-sub {
   font-size: 1rem;
-  color: var(--accent);
+  /* Use a near‑white colour for the scarcity tagline so it remains
+     legible over the animated hero background. The original accent
+     colour looked too dark on some screens. */
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
   max-width: 700px;
   margin-left: auto;
@@ -338,9 +391,12 @@ body {
   filter: brightness(1.05);
 }
 .btn-secondary {
-  border: 2px dashed var(--primary);
-  color: var(--primary);
-  background: rgba(255, 255, 255, 0.02);
+  /* Lighten the secondary button so it remains visible on dark
+     backgrounds. Use a semi‑transparent white border and brighter
+     text. */
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
@@ -359,7 +415,9 @@ body {
   opacity: 0.25;
 }
 .btn-secondary:hover {
-  color: var(--light-bg);
+  /* On hover invert the button for a clear interaction cue */
+  color: var(--dark-bg);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 /* Add a glowing ring on focus for accessibility */
@@ -411,6 +469,9 @@ input[type="range"]::-moz-range-thumb:hover {
   font-style: italic;
   margin-top: 1rem;
   text-align: center;
+  /* Add a soft shadow so the scarcity tagline remains legible over
+     the darker gradient. */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* Hero Background Decoration */
@@ -784,19 +845,18 @@ p {
  * centred. Remove max-width so it can flexibly fill available space.
  */
 .more-industries {
-  justify-self: center;
-  width: 100%;
+  /* Span all columns so the card sits on its own row, then center
+     horizontally using auto margins.  Give it a moderate width on
+     larger screens to avoid empty space.  Flexbox centers the
+     contents vertically and horizontally within the card. */
+  grid-column: 1 / -1;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* Let the more‑industries card take up the entire row on desktop
-     and centre itself with a moderate width so it doesn’t hug the
-     left edge when placed on its own line. */
-  grid-column: 1 / -1;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
 }
 @media (min-width: 900px) {
   .more-industries {
@@ -1040,11 +1100,16 @@ p {
 .cta h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #041c32;
+  /* Use bright white for better contrast on the dark CTA gradient */
+  color: #ffffff;
 }
 
 .cta p {
-  color: #07324c;
+  /* Lighten the paragraph copy so it stands out against the section
+     background. Use high opacity white to maintain legibility. */
+  /* Use pure white for CTA copy to ensure maximum contrast on the
+     dark gradient background. */
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
