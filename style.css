@@ -1240,8 +1240,11 @@ p {
 }
 
 .footer-contact .contact-icon {
-  width: 20px;
-  height: 20px;
+  /* Enlarge contact icons slightly for better legibility on high‑density
+     displays. Keeping the icons square maintains alignment with the
+     accompanying text. */
+  width: 24px;
+  height: 24px;
 }
 
 .footer-note a {
