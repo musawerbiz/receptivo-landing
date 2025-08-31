@@ -429,14 +429,22 @@ input[type="range"]::-moz-range-thumb:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1400px;
-  height: 1400px;
+  /* Increase the size so the blob can reach the edges of very wide screens */
+  width: 1800px;
+  height: 1800px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--accent) 30%, var(--secondary) 60%, transparent 100%);
-  filter: blur(180px);
-  opacity: 0.75;
+  /* Use a radial gradient that concentrates brighter colour near the centre
+     and fades to transparency at the edges. The stops are tuned so
+     multiple hues blend together smoothly. */
+  background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--accent) 25%, var(--secondary) 55%, transparent 100%);
+  /* Heavier blur and slightly higher opacity create a soft, luminous glow */
+  filter: blur(220px) brightness(1.1);
+  opacity: 0.85;
+  /* Blend the blob with the underlying background to achieve a luminous,
+     futuristic effect reminiscent of the Receptivo AI site. */
+  mix-blend-mode: screen;
   pointer-events: none;
-  animation: blobMorph 45s infinite ease-in-out alternate;
+  animation: blobMorph 50s infinite ease-in-out alternate;
 }
 
 @keyframes blobMorph {
