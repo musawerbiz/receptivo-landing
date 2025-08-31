@@ -1260,3 +1260,33 @@ p {
 .footer-note {
   text-align: center;
 }
+
+/*
+ * Scroll to top arrow
+ *
+ * The upward pointing arrow beneath the Calendly embed replaces the
+ * instructional note. It serves as a quick way for visitors to return
+ * to the top of the page. The container centres itself within the
+ * CTA section and provides a smooth hover effect.
+ */
+.scroll-top {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 2rem auto 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Ensure the arrow image fills its container and casts a soft shadow */
+.scroll-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Slight lift on hover to indicate interactivity */
+.scroll-top:hover {
+  transform: translateY(-6px) scale(1.1);
+}

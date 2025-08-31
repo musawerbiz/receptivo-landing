@@ -30,7 +30,8 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <!-- Add an id to the hero section so it can be linked from the scroll‑to‑top arrow -->
+  <section id="hero" class="hero">
     <!-- Dynamic canvas background and overlay for the hero -->
     <canvas id="hero-canvas">Your browser doesn't support canvas</canvas>
     <div class="hero-overlay"></div>
@@ -251,7 +252,10 @@
            style="min-width: 1000px; height: 900px;"></div>
       <!-- Load Calendly’s external widget script so the inline widget renders correctly -->
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <p class="calendly-note">Don’t have Calendly? Replace the link above with your own booking tool embed.</p>
+      <!-- Scroll to top arrow. This replaces the Calendly note and provides a quick way back to the top of the page. -->
+      <a href="#hero" class="scroll-top" aria-label="Back to top">
+        <img src="scroll-arrow.png" alt="Back to top arrow" class="scroll-icon" />
+      </a>
     </div>
   </section>
 
