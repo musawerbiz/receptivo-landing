@@ -166,10 +166,11 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  /* Increase the opacity of the overlay so the moving canvas
-     background doesn’t compete with the hero text. A darker
-     overlay improves contrast and readability. */
-  background: rgba(2, 30, 52, 0.75);
+  /* Slightly lighten the overlay so the animated canvas remains
+     visible while still providing enough contrast behind the hero
+     copy. A mid‑opacity overlay balances legibility and visual
+     interest. */
+  background: rgba(2, 30, 52, 0.65);
   z-index: 1;
   pointer-events: none;
 }
@@ -294,7 +295,10 @@ body {
   background-image: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
-  text-shadow: none;
+  /* Add a subtle shadow to the highlighted word so it doesn’t blend
+     into the animated background. The accent colour remains but
+     becomes more legible. */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero p {
@@ -845,12 +849,15 @@ p {
  * centred. Remove max-width so it can flexibly fill available space.
  */
 .more-industries {
-  /* Span all columns so the card sits on its own row, then center
-     horizontally using auto margins.  Give it a moderate width on
-     larger screens to avoid empty space.  Flexbox centers the
-     contents vertically and horizontally within the card. */
+  /* Span all columns so the card sits on its own row. Center the
+     tile within the industries grid and limit its width so it
+     doesn’t stretch across the entire row. Auto margins and
+     justify-self ensure the card remains centered regardless of the
+     number of columns. */
   grid-column: 1 / -1;
-  width: 70%;
+  justify-self: center;
+  width: 100%;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -860,7 +867,9 @@ p {
 }
 @media (min-width: 900px) {
   .more-industries {
-    width: 50%;
+    /* On larger screens keep the card capped to a sensible width */
+    max-width: 700px;
+    width: 100%;
   }
 }
 @media (max-width: 600px) {
@@ -1105,11 +1114,11 @@ p {
 }
 
 .cta p {
-  /* Lighten the paragraph copy so it stands out against the section
-     background. Use high opacity white to maintain legibility. */
-  /* Use pure white for CTA copy to ensure maximum contrast on the
-     dark gradient background. */
+  /* Maintain high contrast on the dark CTA background. A soft shadow
+     further improves legibility by outlining the text against the
+     gradient. */
   color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   margin-bottom: 2rem;
 }
 
@@ -1180,6 +1189,37 @@ p {
 .footer-contact a {
   color: var(--primary);
   text-decoration: none;
+}
+
+/* Contact methods in the footer: arrange items vertically and
+   horizontally center their icons and links. Each contact item uses
+   flexbox to align an icon next to its text. */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-contact .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.footer-contact .contact-item a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.footer-contact .contact-item a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact .contact-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .footer-note a {
