@@ -291,20 +291,32 @@ body {
  * properties so the text renders as normal text.
  */
 .highlight {
-  color: var(--accent);
+  /* Use the primary brand colour for the highlighted word instead of
+     the pale accent. This increases contrast against the moving
+     background. Remove any leftover background clip properties. */
+  color: var(--primary);
   background-image: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
-  /* Add a subtle shadow to the highlighted word so it doesn’t blend
-     into the animated background. The accent colour remains but
-     becomes more legible. */
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  /* A stronger shadow gives the accent word definition without
+     introducing blur. */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
+/*
+ * Hero paragraph styling
+ *
+ * The introductory paragraph beneath the headline should be easy to read
+ * against the animated hero background. Use a lighter colour from the
+ * palette and add a stronger shadow to lift the copy off the dark
+ * backdrop. Increase the bottom margin to give the primary call‑to‑action
+ * breathing room.
+ */
 .hero p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
-  color: var(--muted);
+  color: var(--accent);
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
 }
 
 /*
@@ -398,9 +410,13 @@ body {
   /* Lighten the secondary button so it remains visible on dark
      backgrounds. Use a semi‑transparent white border and brighter
      text. */
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  /* Lighten the border and background for greater contrast on dark
+     sections. Increasing the alpha on the border and fill helps
+     distinguish the secondary button without overpowering the primary
+     call‑to‑action. */
+  border: 2px solid rgba(255, 255, 255, 0.6);
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.12);
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
@@ -1118,7 +1134,9 @@ p {
      further improves legibility by outlining the text against the
      gradient. */
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  /* Add a deeper shadow so the CTA copy stands out over the darker
+     gradient. The larger blur radius improves legibility. */
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85);
   margin-bottom: 2rem;
 }
 
@@ -1198,14 +1216,18 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .footer-contact .contact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   color: var(--muted);
+  text-align: center;
 }
 
 .footer-contact .contact-item a {
