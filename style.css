@@ -230,6 +230,9 @@ body {
   line-height: 1.2;
   margin-bottom: 1rem;
   font-weight: 700;
+  /* Add a shadow to the headline to improve contrast against the animated
+     background without diminishing the gradient highlight effect */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
 }
 
 @media (min-width: 768px) {
@@ -250,6 +253,21 @@ body {
   color: var(--muted);
 }
 
+/*
+ * Improve readability of hero copy
+ *
+ * The moving background behind the hero can make the headline and
+ * description difficult to read. Override the default colours with a
+ * brighter shade of white and add a subtle shadow so the text stands
+ * out against the dynamic backdrop.
+ */
+.hero p {
+  /* Brighten the copy for greater contrast against the animated hero background */
+  color: rgba(255, 255, 255, 0.98);
+  /* Deepen and enlarge the shadow so the text remains legible over the moving colours */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
+}
+
 /* Additional tagline under the hero copy that conveys scarcity and urgency */
 .hero-sub {
   font-size: 1rem;
@@ -259,6 +277,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.4;
+  /* Add a shadow to the tagline for improved legibility over the dynamic background */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
 }
 
 .hero-actions {
@@ -429,40 +449,51 @@ input[type="range"]::-moz-range-thumb:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Increase the size so the blob can reach the edges of very wide screens */
-  width: 1800px;
-  height: 1800px;
+  /* Enlarge the morphing shape so it dominates the hero and reaches
+     the edges on large screens. Increase its dimensions further to
+     create a more pronounced, active form that fills the section. */
+  width: 2500px;
+  height: 2500px;
   transform: translate(-50%, -50%);
-  /* Use a radial gradient that concentrates brighter colour near the centre
-     and fades to transparency at the edges. The stops are tuned so
-     multiple hues blend together smoothly. */
-  background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--accent) 25%, var(--secondary) 55%, transparent 100%);
-  /* Heavier blur and slightly higher opacity create a soft, luminous glow */
-  filter: blur(220px) brightness(1.1);
+  /* Use a multi‑stop radial gradient blending the brand colours.
+     Increasing the range of colours helps define the irregular shape as it
+     morphs. */
+  background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--accent) 20%, var(--secondary) 45%, var(--primary) 70%, transparent 100%);
+  /* Apply a strong blur and brightness so the shape glows softly. */
+  filter: blur(250px) brightness(1.2);
   opacity: 0.85;
-  /* Blend the blob with the underlying background to achieve a luminous,
-     futuristic effect reminiscent of the Receptivo AI site. */
+  /* Blend with the dark background for a luminous effect. */
   mix-blend-mode: screen;
   pointer-events: none;
-  animation: blobMorph 50s infinite ease-in-out alternate;
+  /* Speed up the animation slightly and allow it to loop continuously
+     without alternating direction so the blob changes form more frequently. */
+  animation: blobMorph 25s infinite ease-in-out;
 }
 
 @keyframes blobMorph {
   0% {
-    border-radius: 40% 60% 50% 50% / 50% 50% 40% 60%;
-    transform: translate(-50%, -50%) scale(1);
+    border-radius: 58% 42% 35% 65% / 60% 40% 55% 45%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
   }
-  33% {
-    border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
-    transform: translate(-50%, -50%) scale(1.1) rotate(15deg);
+  20% {
+    border-radius: 30% 70% 65% 35% / 50% 50% 40% 60%;
+    transform: translate(-50%, -50%) scale(1.2) rotate(30deg);
   }
-  66% {
-    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
-    transform: translate(-50%, -50%) scale(0.9) rotate(-10deg);
+  40% {
+    border-radius: 70% 30% 45% 55% / 65% 35% 70% 30%;
+    transform: translate(-50%, -50%) scale(0.8) rotate(80deg);
+  }
+  60% {
+    border-radius: 35% 65% 55% 45% / 40% 60% 35% 65%;
+    transform: translate(-50%, -50%) scale(1.15) rotate(130deg);
+  }
+  80% {
+    border-radius: 55% 45% 70% 30% / 55% 45% 60% 40%;
+    transform: translate(-50%, -50%) scale(0.9) rotate(200deg);
   }
   100% {
-    border-radius: 40% 60% 50% 50% / 50% 50% 40% 60%;
-    transform: translate(-50%, -50%) scale(1);
+    border-radius: 58% 42% 35% 65% / 60% 40% 55% 45%;
+    transform: translate(-50%, -50%) scale(1) rotate(270deg);
   }
 }
 
@@ -759,17 +790,23 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* Default: span two columns */
-  grid-column: span 2;
+  /* Let the more‑industries card take up the entire row on desktop
+     and centre itself with a moderate width so it doesn’t hug the
+     left edge when placed on its own line. */
+  grid-column: 1 / -1;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (min-width: 900px) {
   .more-industries {
-    grid-column: span 3;
+    width: 50%;
   }
 }
 @media (max-width: 600px) {
   .more-industries {
-    grid-column: span 1;
+    width: 100%;
+    grid-column: 1 / -1;
   }
 }
 
@@ -888,8 +925,11 @@ p {
 
 /* CTA Section */
 .cta {
-  background-image: linear-gradient(45deg, var(--primary), var(--accent));
-  color: #041c32;
+  /* Refresh the demo section with a richer gradient that blends deeper
+     shades of navy and blue, complementing the hero and providing a
+     premium feel. */
+  background-image: linear-gradient(180deg, #03192b 0%, #073c63 100%);
+  color: var(--text-color);
   text-align: center;
 }
 
