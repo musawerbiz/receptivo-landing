@@ -131,6 +131,19 @@ body {
  * create a futuristic, constantly shifting feel. The pseudo-element is
  * deliberately overscaled so motion remains visible even on large screens.
  */
+/*
+ * Hero Section
+ *
+ * Create a sophisticated, futuristic backdrop for the hero by layering
+ * subtle gradients, blurred colour orbs and faint diagonal lines. The
+ * base gradient uses the dark tones from our brand palette. Two
+ * pseudo‑elements animate slowly to add depth: one contains large
+ * blurred circles of brand colours that drift gently, giving a 3D
+ * aurora effect; the other draws semi‑transparent diagonal lines
+ * moving horizontally. These animations are long and smooth so they
+ * enhance rather than distract. The previous sliding texture has
+ * been removed to keep the effect clean and professional.
+ */
 .hero {
   position: relative;
   display: flex;
@@ -139,42 +152,84 @@ body {
   min-height: 85vh;
   text-align: center;
   overflow: hidden;
-  background-image: url('hero-bg.png'); /* fallback texture */
-  /* Scale the background up and animate its position to create a
-     continuous parallax effect. The swirling lines slide slowly
-     across the screen for a dynamic feel. */
-  background-size: 250% 250%;
-  background-position: 0% 50%;
-  animation: heroSlide 15s linear infinite;
+  /* Base dark gradient as a foundation */
+  background: linear-gradient(180deg, #021e34 0%, #052d52 100%);
 }
 
-/* Animated radial overlay moves slowly across the hero area. */
+/* Blurred colour orbs layer */
 .hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 300%;
-  height: 300%;
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(20, 184, 166, 0.5), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.5), transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.4), transparent 65%);
-  animation: heroRadial 60s linear infinite;
-  z-index: 1;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* Softer blurred colour orbs for a futuristic feel.
+     Lower opacities and increased blur create a subtle 3D glow that
+     doesn't distract from the copy. */
+  background:
+    radial-gradient(circle at 30% 30%, rgba(97, 168, 217, 0.35), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(158, 202, 244, 0.25), transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(60, 123, 177, 0.2), transparent 60%);
+  filter: blur(120px);
+  animation: heroBlur 60s linear infinite;
+  z-index: 0;
 }
 
-@keyframes heroRadial {
+/* Fine diagonal lines layer */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* Subtle diagonal light lines to add depth. Reduced opacity and
+     slower animation for a more polished appearance. */
+  background: repeating-linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  opacity: 0.2;
+  animation: heroLines 90s linear infinite;
+  z-index: 0;
+}
+
+/* Note: removed duplicate .hero::before radial overlay. The blurred orbs
+   defined earlier provide the dynamic motion. */
+
+/*
+ * Define subtle animations for the blurred orbs and diagonal lines in the hero.
+ * These keyframes translate and rotate the background elements over long
+ * durations so the motion feels fluid and futuristic without being
+ * distracting. The transformations are gentle and cycle back to their
+ * starting positions.
+ */
+@keyframes heroBlur {
   0% {
-    transform: translate(0%, 0%) scale(1);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate(-50%, 30%) scale(1.05);
+    transform: translate3d(10%, -10%, 0) rotate(180deg);
   }
   100% {
-    transform: translate(0%, 0%) scale(1);
+    transform: translate3d(0, 0, 0) rotate(360deg);
   }
 }
+
+@keyframes heroLines {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+/* Removed heroRadial keyframes as the radial overlay pseudo-element was removed. */
 
 /*
  * Slide the hero background image horizontally. This keyframe moves the
@@ -381,7 +436,7 @@ input[type="range"]::-moz-range-thumb:hover {
      variations. */
   /* Lower opacity so the animated radial overlay remains visible while still
      adding depth with subtle coloured glows */
-  opacity: 0.15;
+  opacity: 0.08;
   filter: blur(80px);
   pointer-events: none;
 }
@@ -572,6 +627,23 @@ p {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
+}
+
+/* Description text under an industry item. Use a smaller font and muted colour
+   to complement the heading without overpowering it. */
+.industry-item p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* Note under the industries heading explaining that more industries can benefit. */
+.industries-note {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* How It Works */
