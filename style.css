@@ -199,11 +199,11 @@ body {
   height: 100vh;
   /* Apply the gooey shadow filter and a gentle blur */
   filter: url('#shadowed-goo') blur(20px);
-  /* Blend on top of the dark background using screen mode to brighten
-     only where the shapes appear. Lower opacity keeps the effect
-     subtle. */
-  mix-blend-mode: screen;
-  opacity: 0.4;
+  /* Allow the animated shapes to appear throughout the site. A normal
+     blend mode with a moderate opacity ensures the canvas colours are
+     visible against the dark panels without overwhelming the text. */
+  mix-blend-mode: normal;
+  opacity: 0.45;
   z-index: -1;
   display: block;
   margin: 0;
