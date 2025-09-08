@@ -179,16 +179,35 @@ body {
    hero section and sits beneath the overlay and content. The SVG
    filters are referenced via the filter property to create the gooey
    effect. A slight blur further softens the edges of the circles. */
+/*
+ * Global dynamic background
+ *
+ * The animated canvas originally restricted to the hero section is now
+ * stretched across the entire viewport. By fixing its position and
+ * sending it behind all other content, the undulating shapes remain
+ * visible throughout the page. A subtle opacity and screen blend mode
+ * ensure the motion enhances the dark backdrop without overpowering
+ * text or UI elements. Pointer events are disabled so the canvas does
+ * not intercept clicks or scroll events.
+ */
 #hero-canvas {
-  position: absolute;
+  /* Occupy the full viewport */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  /* Apply the gooey shadow filter and a gentle blur */
   filter: url('#shadowed-goo') blur(20px);
-  z-index: 0;
+  /* Blend on top of the dark background using screen mode to brighten
+     only where the shapes appear. Lower opacity keeps the effect
+     subtle. */
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  z-index: -1;
   display: block;
   margin: 0;
+  pointer-events: none;
 }
 
 /* Hide the SVG definitions used for filters */
